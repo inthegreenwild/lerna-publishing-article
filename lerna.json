@@ -1,0 +1,20 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "allowBranch": [
+        "develop",
+        "release/*"
+      ],
+      "message": "[JENKINS] release: %s",
+      "registry": "http://verdaccio:4873"
+    }
+  },
+  "ignoreChanges": [
+    "**/__tests__/**",
+    "**/*.md"
+  ],
+  "version": "0.0.0"
+}
