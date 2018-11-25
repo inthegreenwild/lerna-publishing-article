@@ -41,7 +41,7 @@ pipeline {
         }
         stage('publish latst') {
             when {
-                expression { params.semver != 'prerelease' }
+                expression { params.semver != 'prerelease' && params.branch != 'develop' }
             }
             steps {
                 sh """
