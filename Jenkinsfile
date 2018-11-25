@@ -31,11 +31,12 @@ pipeline {
                     ./node_modules/.bin/lerna version prerelease --no-git-tag-version --y
                 """
                 sh """
-                    git checkout .
-                    git clean -df
+                    git config user.name ${user}
+                    git config user.email ${email}
                     git add .
                     git commit -m "prerelease bump"
-                    git push
+                    git push -u origin develop
+                    git checkout master
                 """
             }
         }
@@ -50,7 +51,7 @@ pipeline {
                     git checkout .
                     git clean -df
                     git merge ${params.branch} --no-ff -m "merge ${params.branch} to master"
-                    git push
+                    git push -u origin develop
                 """
             }
         }
