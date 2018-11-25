@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('scm') {
             steps {
-                git branch: "${params.branch}", credentialsId: 'github', url: 'git@github.com:SpookyCorridor/lerna-article.git'
+                git branch: "${params.branch}", credentialsId: 'github', url: 'git@github.com:inthegreenwild/lerna-publishing-article.git'
             }
         }
         stage('build') {
@@ -48,7 +48,7 @@ pipeline {
                     git checkout master
                     git checkout .
                     git clean -df
-                    git merge ${params.branch} --no-ff -m "merge ${params.branch} to master" --no-ff
+                    git merge ${params.branch} --no-ff -m "merge ${params.branch} to master"
                     git push
                 """
             }
