@@ -9,6 +9,8 @@ pipeline {
         stage('scm') {
             steps {
                 git branch: "${params.branch}", credentialsId: 'github', url: 'git@github.com:inthegreenwild/lerna-publishing-article.git'
+                git config user.name ${params.user}
+                git config user.email ${params.email}
             }
         }
         stage('build') {
@@ -31,12 +33,9 @@ pipeline {
                     ./node_modules/.bin/lerna version prerelease --no-git-tag-version --y
                 """
                 sh """
-                    git config user.name ${user}
-                    git config user.email ${email}
                     git add .
                     git commit -m "prerelease bump"
                     git push -u origin develop
-                    git checkout master
                 """
             }
         }
@@ -51,7 +50,7 @@ pipeline {
                     git checkout .
                     git clean -df
                     git merge ${params.branch} --no-ff -m "merge ${params.branch} to master"
-                    git push -u origin develop
+                    git push -u origin master
                 """
             }
         }
