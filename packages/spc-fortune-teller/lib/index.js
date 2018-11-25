@@ -1,5 +1,5 @@
-import randomNumber from "../../random-number/lib/";
-import randomPhrase from "../../random-phrase/lib/";
+import randomNumber from "../../spc-random-number/lib/";
+import randomPhrase from "../../spc-random-phrase/lib/";
 
 export default function fortuneTeller() {
   let luckyNumbers = [];

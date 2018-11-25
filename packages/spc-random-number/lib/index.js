@@ -1,7 +1,3 @@
-'use strict';
-
-module.exports = spcRandomNumber;
-
-function spcRandomNumber() {
-    // TODO
+export default function randomNumber() {
+  return Math.floor(Math.random() * 100);
 }
