@@ -49,7 +49,7 @@ pipeline {
                     git checkout master
                     git checkout .
                     git clean -df
-                    git merge ${params.branch} --no-ff -m "merge ${params.branch} to master"
+                    git merge ${params.branch} --no-ff -m "merge ${params.branch} to master" -X theirs
                     git push -u origin master
                 """
             }
