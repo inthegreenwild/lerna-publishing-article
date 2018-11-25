@@ -15,6 +15,7 @@ pipeline {
             steps {
                 sh '''
                     npm install
+                    ./node_modules/.bin/lerna bootstrap --hoist
                     ./node_modules/.bin/lerna exec -- npm run build
                 '''
             }
